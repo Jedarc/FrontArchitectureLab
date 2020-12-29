@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form ng-controller="serviceController">
+
+    <h1>{{message}}</h1>
+
+    <div class="row form-group">
+        <input type="text" class="form-control" name="code" id="code" placeholder="Código" />
+    </div>
+    <div class="row form-group">
+        <input type="text" class="form-control" name="serviceName" id="serviceName" placeholder="Nome do Serviço" />
+    </div>
+    <div class="row form-group">
+        <select class="form-control" name="type" id="type">
+            <option value="0">Principal</option>
+            <option value="1">Taxa</option>
+        </select>
+    </div>
+    <div class="row form-group">
+        <select class="form-control" name="group" id="group">
+            <option value="0">Solitários</option>
+            <option value="1">Amigáveis</option>
+        </select>
+    </div>
+
+    @if (ViewBag.CountryCode == "BR")
+    {
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="ir" id="ir">
+            <label class="form-check-label" for="ir">Possui imposto de renda?</label>
+        </div>
+
+    }
+    else if (ViewBag.CountryCode == "CH")
+    {
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="boleta" id="boleta">
+            <label class="form-check-label" for="boleta">Exibir na boleta?</label>
+        </div>
+    }
+    else if (ViewBag.CountryCode == "PY")
+    {
+        <div class="row form-group">
+            <select class="form-control" name="iva" id="iva">
+                <option value="0">Isento</option>
+                <option value="5">5%</option>
+                <option value="10">10%</option>
+            </select>
+        </div>
+    }
+
+</form>
+
+
+@section Scripts {
+
+    <script src="~/Views/Service/index.js"></script>
+
+}
